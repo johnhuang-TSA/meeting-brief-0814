@@ -1,0 +1,1380 @@
+<script>
+(function(){
+  var r=document.documentElement, g=function(k){
+    try{var a=localStorage.getItem(k); if(a) return a;}catch(e){}
+    try{var b=sessionStorage.getItem(k); if(b) return b;}catch(e){}
+    return null;
+  };
+  var p=g("huatai-brief-palette")||"sky";
+  var m=g("huatai-brief-mode");
+  if(m!=="light"&&m!=="dark") m=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";
+  r.setAttribute("data-palette",p); r.setAttribute("data-theme",m);
+})();
+</script>
+<title>華泰製藥會議簡報 · 8/14 10:30</title>
+<style>
+/* ── 配色主題：由 <html data-palette data-theme> 驅動 ── */
+:root{
+  --paper:#DFECE9; --card:#F4FAF9; --ink:#0C1F1D; --hair:#BFD8D3; --mute:#4E6663; --blue:#0F5F63; --brick:#0C8356; --teal:#A16419; --ok:#2C6B4C; --warn:#A8741A;
+}
+:root[data-palette="sky"][data-theme="light"]{
+  --paper:#DFECE9; --card:#F4FAF9; --ink:#0C1F1D; --hair:#BFD8D3; --mute:#4E6663; --blue:#0F5F63; --brick:#0C8356; --teal:#A16419; --ok:#2C6B4C; --warn:#A8741A;
+}
+:root[data-palette="sky"][data-theme="dark"]{
+  --paper:#061715; --card:#0E2420; --ink:#E6F5F1; --hair:#1D3B35; --mute:#8FB3AC; --blue:#4FD4DE; --brick:#4FE0A0; --teal:#F0B96A; --ok:#71C295; --warn:#DFAC49;
+}
+:root[data-palette="green"][data-theme="light"]{
+  --paper:#DFF0E3; --card:#F3FAF4; --ink:#0A1F14; --hair:#BDDCC4; --mute:#4C6754; --blue:#0B5C2F; --brick:#0C8344; --teal:#817219; --ok:#2C6B4C; --warn:#A8741A;
+}
+:root[data-palette="green"][data-theme="dark"]{
+  --paper:#04160B; --card:#0D2317; --ink:#E4F6E8; --hair:#183A26; --mute:#8CB697; --blue:#48E08A; --brick:#6FF0A8; --teal:#E0D070; --ok:#71C295; --warn:#DFAC49;
+}
+:root[data-palette="coral"][data-theme="light"]{
+  --paper:#FCE4DA; --card:#FFF5F1; --ink:#241009; --hair:#F0C9B8; --mute:#75574C; --blue:#D72F26; --brick:#BB5209; --teal:#A34A6B; --ok:#2C6B4C; --warn:#A8741A;
+}
+:root[data-palette="coral"][data-theme="dark"]{
+  --paper:#1A0C08; --card:#281813; --ink:#FBE9E1; --hair:#432720; --mute:#BC9A8E; --blue:#FF8A7A; --brick:#FFA45E; --teal:#F095B0; --ok:#71C295; --warn:#DFAC49;
+}
+:root[data-palette="electric"][data-theme="light"]{
+  --paper:#DCE9FA; --card:#F3F8FF; --ink:#0A1A2E; --hair:#B7CFEC; --mute:#4C6079; --blue:#0B3C86; --brick:#0874C5; --teal:#247C8E; --ok:#2C6B4C; --warn:#A8741A;
+}
+:root[data-palette="electric"][data-theme="dark"]{
+  --paper:#04101F; --card:#0D1E31; --ink:#E2EFFC; --hair:#173350; --mute:#89A5C2; --blue:#5FB0FF; --brick:#4FD0FF; --teal:#6FD4E8; --ok:#71C295; --warn:#DFAC49;
+}
+:root[data-palette="berry"][data-theme="light"]{
+  --paper:#ECE0FA; --card:#F9F5FF; --ink:#1B0E2E; --hair:#D4C0EE; --mute:#5F507A; --blue:#6A2FB0; --brick:#9A41E8; --teal:#B0387E; --ok:#2C6B4C; --warn:#A8741A;
+}
+:root[data-palette="berry"][data-theme="dark"]{
+  --paper:#120A1E; --card:#201430; --ink:#EFE4FC; --hair:#332249; --mute:#A995C2; --blue:#C79AFF; --brick:#D8B0FF; --teal:#FF9AD0; --ok:#71C295; --warn:#DFAC49;
+}
+:root[data-palette="sunrise"][data-theme="light"]{
+  --paper:#FCEAD2; --card:#FFF7EC; --ink:#26170A; --hair:#EFD5AE; --mute:#725C42; --blue:#A34A0F; --brick:#AF5B09; --teal:#A06423; --ok:#2C6B4C; --warn:#A8741A;
+}
+:root[data-palette="sunrise"][data-theme="dark"]{
+  --paper:#180E06; --card:#261A0F; --ink:#FBECD8; --hair:#42301C; --mute:#BFA37F; --blue:#FFA85F; --brick:#FFC47A; --teal:#F0B48A; --ok:#71C295; --warn:#DFAC49;
+}
+:root[data-palette="sakura"][data-theme="light"]{
+  --paper:#FCE1EB; --card:#FFF4F8; --ink:#2A0E1C; --hair:#F2C4D7; --mute:#785464; --blue:#D22C6B; --brick:#DA1460; --teal:#A050B8; --ok:#2C6B4C; --warn:#A8741A;
+}
+:root[data-palette="sakura"][data-theme="dark"]{
+  --paper:#180912; --card:#26141D; --ink:#FCE6EF; --hair:#452636; --mute:#C094A6; --blue:#FF8FBC; --brick:#FFB0CE; --teal:#DFA0FF; --ok:#71C295; --warn:#DFAC49;
+}
+:root[data-palette="neon"][data-theme="light"]{
+  --paper:#D6EFEE; --card:#F1FBFA; --ink:#04201F; --hair:#AEDCD8; --mute:#436965; --blue:#037F83; --brick:#078174; --teal:#167C95; --ok:#2C6B4C; --warn:#A8741A;
+}
+:root[data-palette="neon"][data-theme="dark"]{
+  --paper:#021616; --card:#0A2626; --ink:#DDFAF6; --hair:#134240; --mute:#7EBDB6; --blue:#2FF0DC; --brick:#5FFFEC; --teal:#6FD8F0; --ok:#71C295; --warn:#DFAC49;
+}
+:root{
+  --sans:"PingFang TC","Noto Sans TC","Microsoft JhengHei","Hiragino Sans TC",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:36px 24px 90px; display:flex; flex-direction:column; gap:52px}
+.n,.num{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+/* header */
+.mast{display:flex; flex-direction:column; gap:16px; border-bottom:3px solid var(--ink); padding-bottom:22px}
+.eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--mute); margin:0}
+h1{margin:0; font-size:34px; line-height:1.18; font-weight:800; letter-spacing:-.015em; text-wrap:balance}
+.meta{display:flex; flex-wrap:wrap; gap:6px 26px; font-size:14.5px; color:var(--mute)}
+.meta b{color:var(--ink); font-weight:700}
+.link{font-family:var(--mono); font-size:12.5px; word-break:break-all; color:var(--blue)}
+
+/* nav */
+.nav{display:flex; flex-wrap:wrap; gap:8px}
+.nav a{
+  font-size:13.5px; text-decoration:none; color:var(--ink); background:var(--card);
+  border:1px solid var(--hair); border-radius:999px; padding:5px 14px;
+}
+.nav a:hover{border-color:var(--ink)}
+.nav a:focus-visible{outline:2px solid var(--blue); outline-offset:2px}
+
+/* pinned callouts */
+.pin{border:2px solid var(--brick); border-radius:3px; background:var(--card); padding:20px 22px; display:flex; flex-direction:column; gap:10px}
+.pin--teal{border-color:var(--teal)}
+.pin__k{font-family:var(--mono); font-size:11.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--brick)}
+.pin--teal .pin__k{color:var(--teal)}
+.pin__q{margin:0; font-size:22px; font-weight:800; line-height:1.4; text-wrap:balance}
+.pin__n{margin:0; font-size:15px; color:var(--mute); line-height:1.7}
+
+/* sections */
+section{display:flex; flex-direction:column; gap:18px; scroll-margin-top:16px}
+h2{margin:0; font-size:22px; font-weight:800; letter-spacing:-.01em; padding-bottom:8px; border-bottom:2px solid var(--hair)}
+h3{margin:0; font-size:17px; font-weight:800}
+.lede{margin:0; font-size:15px; color:var(--mute); max-width:70ch; line-height:1.75}
+
+/* tables */
+.scroll{overflow-x:auto; border:1px solid var(--hair); border-radius:3px; background:var(--card)}
+table{width:100%; border-collapse:collapse; font-size:16.5px; min-width:660px}
+th,td{padding:15px 17px; text-align:left; border-bottom:1px solid var(--hair); vertical-align:baseline}
+thead th{font-family:var(--mono); font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); font-weight:600; background:color-mix(in srgb,var(--ink) 4%,transparent); white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right; white-space:nowrap}
+.rail{border-left:5px solid var(--hair)}
+.rail--blue{border-left-color:var(--blue)}
+.rail--brick{border-left-color:var(--brick)}
+.rail--teal{border-left-color:var(--teal)}
+.oil{font-weight:800; white-space:nowrap}
+.sub{display:block; font-weight:400; font-size:13.5px; color:var(--mute); margin-top:3px}
+.base td{background:color-mix(in srgb,var(--ink) 6%,transparent); font-weight:800}
+.gap{color:var(--warn); font-weight:800}
+.ok{color:var(--ok); font-weight:800}
+.chip{display:inline-block; font-family:var(--mono); font-size:12.5px; padding:3px 9px; border-radius:3px; border:1px solid currentColor; white-space:nowrap}
+.chip--gap{color:var(--warn)} .chip--ok{color:var(--ok)}
+
+/* agenda blocks */
+.blk{border:1px solid var(--hair); border-left:5px solid var(--ink); border-radius:3px; background:var(--card); padding:20px 22px; display:flex; flex-direction:column; gap:16px}
+.blk--hot{border-left-color:var(--brick)}
+.blk__hd{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; padding-bottom:4px}
+.blk__t{font-size:18px; font-weight:800}
+.blk__m{font-family:var(--mono); font-size:12px; color:var(--mute); letter-spacing:.05em}
+
+/* question items */
+.qs{display:flex; flex-direction:column; gap:14px}
+.q{display:flex; gap:13px; align-items:flex-start}
+.q__no{font-family:var(--mono); font-size:13px; font-weight:700; color:var(--mute); min-width:22px; padding-top:3px}
+.q__body{display:flex; flex-direction:column; gap:3px}
+.q__ask{font-size:16px; font-weight:700; line-height:1.55}
+.q__ask.key{background:color-mix(in srgb,var(--warn) 20%,transparent); padding:1px 5px; border-radius:2px; align-self:flex-start}
+.q__why{font-size:14px; color:var(--mute); line-height:1.65}
+.q__why::before{content:"為什麼問："; font-weight:700; color:var(--ink)}
+
+/* scenarios */
+.sc{border:1px solid var(--hair); border-radius:3px; background:var(--card); padding:18px 20px; display:flex; flex-direction:column; gap:11px}
+.sc__if{font-size:16.5px; font-weight:800; line-height:1.45; padding-bottom:9px; border-bottom:1px dashed var(--hair)}
+.sc__row{display:flex; flex-direction:column; gap:4px}
+.sc__lab{font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--mute)}
+.sc__say{margin:0; font-size:15px; line-height:1.7; border-left:3px solid var(--brick); padding-left:12px}
+.sc__note{margin:0; font-size:14px; color:var(--mute); line-height:1.65}
+
+/* say / dont */
+.two{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.box{border:1px solid var(--hair); border-top:4px solid var(--ok); border-radius:3px; background:var(--card); padding:18px 20px; display:flex; flex-direction:column; gap:10px}
+.box--no{border-top-color:var(--brick)}
+.box ul{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:9px; font-size:15px; line-height:1.65}
+
+/* footer */
+.foot{border-top:2px solid var(--hair); padding-top:20px; font-size:13.5px; color:var(--mute); display:flex; flex-direction:column; gap:10px; line-height:1.7}
+.foot b{color:var(--ink)}
+
+/* ── 內部文件提醒 ── */
+.warn-bar{
+  display:flex; align-items:center; gap:10px; background:color-mix(in srgb,var(--brick) 12%,transparent);
+  border:1.5px solid var(--brick); border-radius:6px; padding:10px 16px; font-size:14.5px; font-weight:700;
+}
+.warn-bar span{font-size:19px; line-height:1}
+
+/* ── 公司介紹／問題卡 ── */
+.kv{display:grid; grid-template-columns:auto 1fr; gap:10px 20px; font-size:15.5px; align-items:baseline}
+.kv dt{font-weight:800; color:var(--mute); white-space:nowrap; font-size:14px}
+.kv dd{margin:0}
+.facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px}
+.fact{border:1px solid var(--hair); border-radius:6px; background:var(--card); padding:15px 17px; display:flex; flex-direction:column; gap:5px}
+.fact__k{font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute)}
+.fact__v{font-size:17px; font-weight:800; line-height:1.4}
+.fact__n{font-size:14px; color:var(--mute); line-height:1.6}
+
+.prob{border:1px solid var(--hair); border-left:5px solid var(--brick); border-radius:4px; background:var(--card);
+  padding:17px 20px; display:flex; flex-direction:column; gap:9px}
+.prob__t{font-size:17.5px; font-weight:800; line-height:1.45; display:flex; gap:10px; align-items:baseline}
+.prob__no{font-family:var(--mono); font-size:13px; color:var(--mute); flex-shrink:0}
+.prob__row{display:grid; grid-template-columns:auto 1fr; gap:5px 12px; font-size:15px; line-height:1.65}
+.prob__lab{font-family:var(--mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--mute);
+  white-space:nowrap; padding-top:4px}
+.prob__txt{margin:0}
+
+/* ── 左側快捷導覽 ── */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.sidenav{
+  position:fixed; left:20px; top:50%; transform:translateY(-50%); z-index:30;
+  width:196px; max-height:88vh; overflow-y:auto;
+  background:var(--card); border:1.5px solid var(--hair); border-radius:10px;
+  padding:14px 12px; box-shadow:0 4px 20px rgba(0,0,0,.10);
+  display:flex; flex-direction:column; gap:2px;
+}
+.sidenav__t{font-family:var(--mono); font-size:10.5px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--mute); padding:0 8px 7px}
+.sidenav a{
+  display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--ink);
+  font-size:14px; font-weight:700; padding:7px 9px; border-radius:7px; line-height:1.35;
+  border-left:3px solid transparent;
+}
+.sidenav a:hover{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.sidenav a:focus-visible{outline:2px solid var(--blue); outline-offset:1px}
+.sidenav a.on{background:color-mix(in srgb,var(--blue) 13%,transparent); border-left-color:var(--blue)}
+.sidenav a.sub{font-size:13px; font-weight:600; padding-left:20px; color:var(--mute)}
+.sidenav a.sub .dot{width:9px; height:9px; border-radius:50%; flex-shrink:0}
+.sidenav a.sub[data-role="sc"] .dot{background:var(--blue)}
+.sidenav a.sub[data-role="qc"] .dot{background:var(--brick)}
+.sidenav a.sub[data-role="pc"] .dot{background:var(--teal)}
+.sidenav a.sub.on{color:var(--ink)}
+.sidenav .num{margin-left:auto; font-family:var(--mono); font-size:11.5px; color:var(--mute); font-weight:500}
+.sidenav__top{margin-top:6px; border-top:1px solid var(--hair); padding-top:8px; font-weight:600; font-size:13px; color:var(--mute)}
+@media (max-width:1460px){.sidenav{display:none}}
+@media print{.sidenav{display:none!important}}
+
+/* 選單色票 */
+.pal-item[data-id="sky"] .pal-sw i:nth-child(1){background:#0F5F63}
+.pal-item[data-id="sky"] .pal-sw i:nth-child(2){background:#0C8356}
+:root[data-theme="dark"] .pal-item[data-id="sky"] .pal-sw i:nth-child(1){background:#4FD4DE}
+:root[data-theme="dark"] .pal-item[data-id="sky"] .pal-sw i:nth-child(2){background:#4FE0A0}
+.pal-item[data-id="sky"][aria-checked="true"]{border-color:#0F5F63; background:color-mix(in srgb,#0F5F63 10%,transparent)}
+.pal-item[data-id="sky"][aria-checked="true"] .pal-ck{color:#0F5F63}
+:root[data-theme="dark"] .pal-item[data-id="sky"][aria-checked="true"]{border-color:#4FD4DE; background:color-mix(in srgb,#4FD4DE 14%,transparent)}
+:root[data-theme="dark"] .pal-item[data-id="sky"][aria-checked="true"] .pal-ck{color:#4FD4DE}
+.pal-item[data-id="green"] .pal-sw i:nth-child(1){background:#0B5C2F}
+.pal-item[data-id="green"] .pal-sw i:nth-child(2){background:#0C8344}
+:root[data-theme="dark"] .pal-item[data-id="green"] .pal-sw i:nth-child(1){background:#48E08A}
+:root[data-theme="dark"] .pal-item[data-id="green"] .pal-sw i:nth-child(2){background:#6FF0A8}
+.pal-item[data-id="green"][aria-checked="true"]{border-color:#0B5C2F; background:color-mix(in srgb,#0B5C2F 10%,transparent)}
+.pal-item[data-id="green"][aria-checked="true"] .pal-ck{color:#0B5C2F}
+:root[data-theme="dark"] .pal-item[data-id="green"][aria-checked="true"]{border-color:#48E08A; background:color-mix(in srgb,#48E08A 14%,transparent)}
+:root[data-theme="dark"] .pal-item[data-id="green"][aria-checked="true"] .pal-ck{color:#48E08A}
+.pal-item[data-id="coral"] .pal-sw i:nth-child(1){background:#D72F26}
+.pal-item[data-id="coral"] .pal-sw i:nth-child(2){background:#BB5209}
+:root[data-theme="dark"] .pal-item[data-id="coral"] .pal-sw i:nth-child(1){background:#FF8A7A}
+:root[data-theme="dark"] .pal-item[data-id="coral"] .pal-sw i:nth-child(2){background:#FFA45E}
+.pal-item[data-id="coral"][aria-checked="true"]{border-color:#D72F26; background:color-mix(in srgb,#D72F26 10%,transparent)}
+.pal-item[data-id="coral"][aria-checked="true"] .pal-ck{color:#D72F26}
+:root[data-theme="dark"] .pal-item[data-id="coral"][aria-checked="true"]{border-color:#FF8A7A; background:color-mix(in srgb,#FF8A7A 14%,transparent)}
+:root[data-theme="dark"] .pal-item[data-id="coral"][aria-checked="true"] .pal-ck{color:#FF8A7A}
+.pal-item[data-id="electric"] .pal-sw i:nth-child(1){background:#0B3C86}
+.pal-item[data-id="electric"] .pal-sw i:nth-child(2){background:#0874C5}
+:root[data-theme="dark"] .pal-item[data-id="electric"] .pal-sw i:nth-child(1){background:#5FB0FF}
+:root[data-theme="dark"] .pal-item[data-id="electric"] .pal-sw i:nth-child(2){background:#4FD0FF}
+.pal-item[data-id="electric"][aria-checked="true"]{border-color:#0B3C86; background:color-mix(in srgb,#0B3C86 10%,transparent)}
+.pal-item[data-id="electric"][aria-checked="true"] .pal-ck{color:#0B3C86}
+:root[data-theme="dark"] .pal-item[data-id="electric"][aria-checked="true"]{border-color:#5FB0FF; background:color-mix(in srgb,#5FB0FF 14%,transparent)}
+:root[data-theme="dark"] .pal-item[data-id="electric"][aria-checked="true"] .pal-ck{color:#5FB0FF}
+.pal-item[data-id="berry"] .pal-sw i:nth-child(1){background:#6A2FB0}
+.pal-item[data-id="berry"] .pal-sw i:nth-child(2){background:#9A41E8}
+:root[data-theme="dark"] .pal-item[data-id="berry"] .pal-sw i:nth-child(1){background:#C79AFF}
+:root[data-theme="dark"] .pal-item[data-id="berry"] .pal-sw i:nth-child(2){background:#D8B0FF}
+.pal-item[data-id="berry"][aria-checked="true"]{border-color:#6A2FB0; background:color-mix(in srgb,#6A2FB0 10%,transparent)}
+.pal-item[data-id="berry"][aria-checked="true"] .pal-ck{color:#6A2FB0}
+:root[data-theme="dark"] .pal-item[data-id="berry"][aria-checked="true"]{border-color:#C79AFF; background:color-mix(in srgb,#C79AFF 14%,transparent)}
+:root[data-theme="dark"] .pal-item[data-id="berry"][aria-checked="true"] .pal-ck{color:#C79AFF}
+.pal-item[data-id="sunrise"] .pal-sw i:nth-child(1){background:#A34A0F}
+.pal-item[data-id="sunrise"] .pal-sw i:nth-child(2){background:#AF5B09}
+:root[data-theme="dark"] .pal-item[data-id="sunrise"] .pal-sw i:nth-child(1){background:#FFA85F}
+:root[data-theme="dark"] .pal-item[data-id="sunrise"] .pal-sw i:nth-child(2){background:#FFC47A}
+.pal-item[data-id="sunrise"][aria-checked="true"]{border-color:#A34A0F; background:color-mix(in srgb,#A34A0F 10%,transparent)}
+.pal-item[data-id="sunrise"][aria-checked="true"] .pal-ck{color:#A34A0F}
+:root[data-theme="dark"] .pal-item[data-id="sunrise"][aria-checked="true"]{border-color:#FFA85F; background:color-mix(in srgb,#FFA85F 14%,transparent)}
+:root[data-theme="dark"] .pal-item[data-id="sunrise"][aria-checked="true"] .pal-ck{color:#FFA85F}
+.pal-item[data-id="sakura"] .pal-sw i:nth-child(1){background:#D22C6B}
+.pal-item[data-id="sakura"] .pal-sw i:nth-child(2){background:#DA1460}
+:root[data-theme="dark"] .pal-item[data-id="sakura"] .pal-sw i:nth-child(1){background:#FF8FBC}
+:root[data-theme="dark"] .pal-item[data-id="sakura"] .pal-sw i:nth-child(2){background:#FFB0CE}
+.pal-item[data-id="sakura"][aria-checked="true"]{border-color:#D22C6B; background:color-mix(in srgb,#D22C6B 10%,transparent)}
+.pal-item[data-id="sakura"][aria-checked="true"] .pal-ck{color:#D22C6B}
+:root[data-theme="dark"] .pal-item[data-id="sakura"][aria-checked="true"]{border-color:#FF8FBC; background:color-mix(in srgb,#FF8FBC 14%,transparent)}
+:root[data-theme="dark"] .pal-item[data-id="sakura"][aria-checked="true"] .pal-ck{color:#FF8FBC}
+.pal-item[data-id="neon"] .pal-sw i:nth-child(1){background:#037F83}
+.pal-item[data-id="neon"] .pal-sw i:nth-child(2){background:#078174}
+:root[data-theme="dark"] .pal-item[data-id="neon"] .pal-sw i:nth-child(1){background:#2FF0DC}
+:root[data-theme="dark"] .pal-item[data-id="neon"] .pal-sw i:nth-child(2){background:#5FFFEC}
+.pal-item[data-id="neon"][aria-checked="true"]{border-color:#037F83; background:color-mix(in srgb,#037F83 10%,transparent)}
+.pal-item[data-id="neon"][aria-checked="true"] .pal-ck{color:#037F83}
+:root[data-theme="dark"] .pal-item[data-id="neon"][aria-checked="true"]{border-color:#2FF0DC; background:color-mix(in srgb,#2FF0DC 14%,transparent)}
+:root[data-theme="dark"] .pal-item[data-id="neon"][aria-checked="true"] .pal-ck{color:#2FF0DC}
+
+/* ── 提問清單：篩選與勾選 ── */
+.ask-tools{display:flex; flex-wrap:wrap; gap:12px 18px; align-items:center; justify-content:space-between;
+  border:1px solid var(--hair); border-radius:3px; background:var(--card); padding:12px 16px}
+.filters{display:flex; flex-wrap:wrap; gap:8px}
+.filters button{
+  font-family:var(--sans); font-size:14.5px; font-weight:700; cursor:pointer;
+  background:transparent; color:var(--ink); border:1.5px solid var(--hair);
+  border-radius:999px; padding:6px 15px;
+}
+.filters button:hover{border-color:var(--mute)}
+.filters button:focus-visible{outline:2px solid var(--blue); outline-offset:2px}
+.filters button[aria-pressed="true"]{background:var(--ink); color:var(--card); border-color:var(--ink)}
+.filters .cnt{font-family:var(--mono); font-size:12.5px; opacity:.75; margin-left:2px}
+.ask-prog{font-family:var(--mono); font-size:13.5px; color:var(--mute); display:flex; align-items:center; gap:10px}
+.ask-prog #askDone{color:var(--ink); font-weight:700}
+.mini-btn{font-family:var(--sans); font-size:12.5px; cursor:pointer; background:transparent;
+  color:var(--mute); border:1px solid var(--hair); border-radius:999px; padding:3px 11px}
+.mini-btn:hover{color:var(--ink); border-color:var(--mute)}
+.mini-btn:focus-visible{outline:2px solid var(--blue); outline-offset:2px}
+
+.role-hd{font-size:19px; font-weight:800; margin:14px 0 -4px; display:flex; align-items:center; gap:10px}
+.role-hd::before{content:""; width:14px; height:14px; border-radius:50%; background:var(--blue); flex-shrink:0}
+.role-hd[data-role="qc"]::before{background:var(--brick)}
+.role-hd[data-role="pc"]::before{background:var(--teal)}
+
+label.q{display:flex; gap:12px; align-items:flex-start; cursor:pointer; border-radius:4px; padding:3px 4px; margin:-3px -4px}
+label.q:hover{background:color-mix(in srgb,var(--ink) 4%,transparent)}
+label.q:focus-within{outline:2px solid var(--blue); outline-offset:1px}
+.q__cb{width:19px; height:19px; margin:5px 0 0; flex-shrink:0; accent-color:var(--blue); cursor:pointer}
+label.q .q__body{display:flex; flex-direction:column; gap:3px}
+label.q .q__ask{font-size:16.5px; font-weight:700; line-height:1.55}
+label.q .q__why{font-size:14.5px; color:var(--mute); line-height:1.65}
+label.q .q__why::before{content:"為什麼問："; font-weight:700; color:var(--ink)}
+.q__tag{display:inline-block; font-family:var(--mono); font-size:11.5px; font-weight:700;
+  color:var(--card); background:var(--brick); border-radius:3px; padding:1px 7px; margin-right:8px;
+  vertical-align:2px; letter-spacing:.05em}
+label.q.done .q__ask,label.q.done .q__why{opacity:.42}
+label.q.done .q__ask{text-decoration:line-through; text-decoration-thickness:1px}
+[hidden]{display:none!important}
+
+/* ── 配色主題選擇器 ── */
+.pal-btn{
+  position:fixed; right:20px; bottom:20px; z-index:40;
+  display:flex; align-items:center; gap:8px;
+  background:var(--card); color:var(--ink); border:1.5px solid var(--hair);
+  border-radius:999px; padding:10px 16px; font-family:var(--sans); font-size:14px; font-weight:700;
+  cursor:pointer; box-shadow:0 3px 14px rgba(0,0,0,.13);
+}
+.pal-btn:hover{border-color:var(--ink)}
+.pal-btn:focus-visible{outline:2px solid var(--blue); outline-offset:3px}
+.pal-btn .dots{display:flex; gap:3px}
+.pal-btn .dots i{width:9px; height:9px; border-radius:50%; display:block}
+
+.pal-panel{
+  position:fixed; right:20px; bottom:74px; z-index:41; width:min(340px,calc(100vw - 40px));
+  background:var(--card); border:1.5px solid var(--hair); border-radius:8px;
+  padding:18px; box-shadow:0 10px 34px rgba(0,0,0,.2);
+  display:none; flex-direction:column; gap:6px; max-height:min(70vh,560px); overflow-y:auto;
+}
+.pal-panel[data-open="true"]{display:flex}
+.pal-panel h4{margin:0; font-size:16px; font-weight:800; display:flex; align-items:center; gap:7px}
+.pal-panel p{margin:0 0 8px; font-size:12.5px; color:var(--mute); line-height:1.6}
+.pal-lab{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin:2px 0 6px}
+.pal-seg{display:grid; grid-template-columns:repeat(2,1fr); gap:0; border:1.5px solid var(--hair); border-radius:999px; overflow:hidden; margin-bottom:12px}
+.pal-seg button{
+  border:0; background:transparent; color:var(--ink); font-family:var(--sans);
+  font-size:13px; font-weight:700; padding:7px 4px; cursor:pointer;
+}
+.pal-seg button + button{border-left:1.5px solid var(--hair)}
+.pal-seg button:hover{background:color-mix(in srgb,var(--ink) 6%,transparent)}
+.pal-seg button:focus-visible{outline:2px solid var(--blue); outline-offset:-2px}
+.pal-seg button[aria-pressed="true"]{background:var(--ink); color:var(--card)}
+.pal-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+.pal-item{
+  display:flex; align-items:center; gap:10px; text-align:left;
+  background:transparent; border:1.5px solid var(--hair); border-radius:12px;
+  padding:10px 11px; cursor:pointer; font-family:var(--sans); color:var(--ink);
+}
+.pal-item:hover{border-color:var(--mute)}
+.pal-item:focus-visible{outline:2px solid var(--blue); outline-offset:2px}
+.pal-sw{
+  flex-shrink:0; width:46px; height:26px; border-radius:999px; overflow:hidden;
+  display:flex; box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);
+}
+.pal-sw i{width:50%; height:100%; display:block}
+.pal-txt{display:flex; flex-direction:column; line-height:1.35; min-width:0}
+.pal-nm{font-size:13.5px; font-weight:800; white-space:nowrap}
+.pal-ds{font-size:11px; color:var(--mute); white-space:nowrap}
+.pal-ck{margin-left:auto; font-size:14px; font-weight:800; opacity:0}
+.pal-item[aria-checked="true"] .pal-ck{opacity:1}
+@media print{.pal-btn,.pal-panel{display:none!important}}
+
+@media (max-width:760px){
+  body{font-size:15px}
+  h1{font-size:26px} h2{font-size:19px} .pin__q{font-size:18px}
+  .two{grid-template-columns:1fr}
+  .wrap{padding:24px 16px 64px; gap:40px}
+  .blk,.sc,.box,.pin{padding:16px}
+  .pal-btn{right:14px; bottom:14px} .pal-panel{right:14px; bottom:66px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+
+<nav class="sidenav" aria-label="頁面快捷導覽">
+  <div class="sidenav__t">快速跳轉</div>
+  <a href="#key">一句話重點</a>
+  <a href="#who">華泰是誰</a>
+  <a href="#why">我方的問題</a>
+  <a href="#spec">規格門檻</a>
+  <a href="#gap">華泰差在哪</a>
+  <a href="#vol">我方年用量</a>
+  <a href="#ask">會議提問清單<span class="num">48</span></a>
+  <a href="#role-sc" class="sub" data-role="sc"><span class="dot"></span>供應鏈<span class="num">19</span></a>
+  <a href="#role-qc" class="sub" data-role="qc"><span class="dot"></span>品管<span class="num">16</span></a>
+  <a href="#role-pc" class="sub" data-role="pc"><span class="dot"></span>生管<span class="num">13</span></a>
+  <a href="#case">狀況與應對</a>
+  <a href="#say">能講不能講</a>
+  <a href="#top" class="sidenav__top">↑ 回到最上面</a>
+</nav>
+
+<div class="wrap" id="top">
+
+  <header class="mast">
+    <p class="eyebrow">供應鏈部 · 會前簡報</p>
+    <h1>華泰製藥（Huatai Pharma）線上會議</h1>
+    <div class="meta">
+      <span><b>2026/08/14（五）10:30–11:30</b>　台灣時間</span>
+      <span>對方窗口　<b>Candy Bai　白曦</b>（Sales Manager）</span>
+      <span>我方出席　<b>供應鏈 ＋ 品管，2 位</b></span>
+    </div>
+    <div class="meta"><span>會議室</span><span class="link">https://teams.live.com/meet/9322286150247?p=VnQeuSRJwxJYGfTAFx</span></div>
+    <p class="lede">她發的 Teams 邀請上寫 10:00–11:30，那是改期前開的舊會議忘了更新。<b>時間以 10:30 為準</b>——她 8/10 已經回覆「好的」同意順延半小時。</p>
+  </header>
+
+  <div class="warn-bar"><span>⚠</span>內部文件——含「不能講」的內容與我方成本資訊。會議中請勿分享此畫面。</div>
+
+  <nav class="nav" aria-label="章節導覽">
+    <a href="#key">一句話重點</a>
+    <a href="#who">華泰是誰</a>
+    <a href="#why">我方的問題</a>
+    <a href="#spec">我方規格門檻</a>
+    <a href="#gap">華泰差在哪</a>
+    <a href="#vol">我方年用量</a>
+    <a href="#ask">會議流程與提問</a>
+    <a href="#case">狀況與應對</a>
+    <a href="#say">能講不能講</a>
+  </nav>
+
+  <div class="pin" id="key">
+    <div class="pin__k">今天最重要的一題</div>
+    <p class="pin__q">「貴司規格書上的 48 / 36，是<u>面積百分比</u>還是<u>重量百分比</u>？」</p>
+    <p class="pin__n">魚油規格書有兩種寫法。她的規格書寫 <b>94 / 48 / 36</b>（面積%），看起來比我方的 92 / 48 / 36 還高；但換算成重量後只有 <b>890 / 450 / 340 mg/g</b>，就低於我方需要的 920 / 480 / 360。<br>我方彩盒寫的是「Omega-3 1,104 <b>毫克</b>」，是實際重量，所以只能用重量基準。<b>這題沒問清楚，今天的規格討論不會有結論。</b></p>
+  </div>
+
+<section id="who">
+    <h2>華泰製藥是什麼樣的公司</h2>
+    <p class="lede">給第一次接觸這家廠商的同仁。<b>他們是賣「原油」的，不是代工廠</b>——賣的是一桶一桶的高濃度魚油原料，我方買回來後還要送給代工廠做成軟膠囊。</p>
+
+    <div class="facts">
+      <div class="fact">
+        <div class="fact__k">公司</div>
+        <div class="fact__v">華泰製藥<br>Huatai Pharma Inc.</div>
+        <div class="fact__n">中國四川省德陽市孝泉鎮工業園區</div>
+      </div>
+      <div class="fact">
+        <div class="fact__k">在做什麼</div>
+        <div class="fact__v">高濃度魚油濃縮原料</div>
+        <div class="fact__n">把粗製魚油濃縮成高濃度規格再賣出。不做成品代工。</div>
+      </div>
+      <div class="fact">
+        <div class="fact__k">魚從哪來</div>
+        <div class="fact__v">秘魯鯷魚<br><span style="font-size:14px;font-weight:400">Engraulis ringens</span></div>
+        <div class="fact__n">與我方現行產品同一魚種，可提供秘魯產地證。</div>
+      </div>
+      <div class="fact">
+        <div class="fact__k">窗口</div>
+        <div class="fact__v">Candy Bai（白曦）</div>
+        <div class="fact__n">Sales Manager。往來以中文為主，回覆習慣是在原信上標黃色註記。</div>
+      </div>
+    </div>
+
+    <h3>怎麼認識的</h3>
+    <dl class="kv">
+      <dt>7/30</dt><dd><b>對方主動來信</b>——透過我方官網的客服信箱寄來，主旨是「協助因應 2026 年秘魯漁獲短缺」。不是我方去找他們的。</dd>
+      <dt>7/31–8/3</dt><dd>我方回覆並索取資料，對方提供公司簡介與認證文件，之後陸續給了四份規格書。</dd>
+      <dt>8/4–8/5</dt><dd>開始討論規格。對方建議我方改用較低的規格（400/300），我方不接受；我方另詢問 8006 的供應狀況。</dd>
+      <dt>8/8</dt><dd>對方逐項回覆，附上 5040TG 規格書，報價 <b>CIF 到港 USD 110／公斤、MOQ 190 公斤</b>。</dd>
+      <dt>8/14</dt><dd><b>今天這場會議</b>——雙方第一次線上見面，我方帶品管與生管一起。</dd>
+    </dl>
+
+    <h3>目前已知的能與不能</h3>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>規格</th><th>目前狀況</th><th>備註</th></tr></thead>
+        <tbody>
+          <tr><td class="oil">4836TG</td><td><span class="chip chip--gap">規格未達我方標示</span></td><td>890 / 450 / 340 mg/g，三項都差一點</td></tr>
+          <tr><td class="oil">5040TG</td><td><span class="chip chip--gap">最接近，差兩項</span></td><td>900 / 470 / 380 mg/g，已報價 USD 110／公斤</td></tr>
+          <tr><td class="oil">8006TG</td><td><span class="chip chip--gap">高 EPA 原料緊缺</span></td><td>很少接單，3～4 個月才集中生產一批</td></tr>
+          <tr><td class="oil">6020TG</td><td><span class="chip chip--gap">已基本暫停接單</span></td><td>同樣受高 EPA 原料緊缺影響</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pin pin--teal">
+      <div class="pin__k">兩個要注意的地方</div>
+      <p class="pin__q" style="font-size:17px">信箱網域是 <span class="num">huatai-pharma.com</span>，不是 huatai-pharm.com。</p>
+      <p class="pin__n">少一個 a 是錯的網域，我方先前寄錯過。對方 8/10 已書面確認：正式合作階段一律使用 <b>candy@huatai-pharma.com</b>。<br>
+      另外，<b>認證還沒查證過</b>——對方提過 GMP 與 GOED，但沒說發證機構與有效期，這一項請品管今天當面問清楚。</p>
+    </div>
+  </section>
+
+  <section id="why">
+    <h2>我方目前遇到的問題</h2>
+    <p class="lede">這場會議不是隨便看看新廠商，是有六個實際問題要解。了解這些，才知道每個問題背後想從對方拿到什麼。</p>
+
+    <div class="prob">
+      <div class="prob__t"><span class="prob__no">01</span>8006（大紅魚）快要買不到了</div>
+      <div class="prob__row">
+        <span class="prob__lab">狀況</span><p class="prob__txt">高 EPA 魚油全球都缺。我方一年要用 <b>1,159 公斤（6.1 桶）</b>，目前來源單一。</p>
+        <span class="prob__lab">影響</span><p class="prob__txt">斷料就直接停產，這支是達摩本草的主力品項之一。</p>
+        <span class="prob__lab">今天要拿到</span><p class="prob__txt">對方到底能不能接單、下一批什麼時候排產、規格書上最高能寫到 EPA 多少。</p>
+      </div>
+    </div>
+
+    <div class="prob">
+      <div class="prob__t"><span class="prob__no">02</span>規格認定卡住：面積% 還是重量%</div>
+      <div class="prob__row">
+        <span class="prob__lab">狀況</span><p class="prob__txt">魚油規格書有兩種算法。對方寫 94 / 48 / 36 是<b>面積%</b>，換成<b>重量%</b>只有 890 / 450 / 340 mg/g，低於我方彩盒標示需要的 920 / 480 / 360。</p>
+        <span class="prob__lab">影響</span><p class="prob__txt">我方標示只能引用規格書的保證值。數字對不上就不能買，或者要改彩盒、瓶標與全部通路頁面。</p>
+        <span class="prob__lab">今天要拿到</span><p class="prob__txt">對方以重量基準能出具的最高保證值，以及願不願意為我方訂單客製規格書。</p>
+      </div>
+    </div>
+
+    <div class="prob">
+      <div class="prob__t"><span class="prob__no">03</span>每個規格都只有一家供應商</div>
+      <div class="prob__row">
+        <span class="prob__lab">狀況</span><p class="prob__txt">4836、6020、8006 各自只綁一條供應線，沒有備援。</p>
+        <span class="prob__lab">影響</span><p class="prob__txt">任何一家出問題（缺料、漲價、品質異常），我方沒有第二選擇，議價空間也等於零。</p>
+        <span class="prob__lab">今天要拿到</span><p class="prob__txt">確認華泰是否具備成為第二來源的資格——規格、產能、文件三項都要過。</p>
+      </div>
+    </div>
+
+    <div class="prob">
+      <div class="prob__t"><span class="prob__no">04</span>價格波動太大，無法編預算</div>
+      <div class="prob__row">
+        <span class="prob__lab">狀況</span><p class="prob__txt">高濃度魚油 2025 年是低點、2026 年明顯回升，秘魯漁季又已結束，後續預期更緊。</p>
+        <span class="prob__lab">影響</span><p class="prob__txt">成本抓不準，報價與售價的節奏被打亂。</p>
+        <span class="prob__lab">今天要拿到</span><p class="prob__txt">能不能談<b>年度鎖價</b>或先鎖量分批出貨。這比殺價重要。</p>
+      </div>
+    </div>
+
+    <div class="prob">
+      <div class="prob__t"><span class="prob__no">05</span>6020 兩支產品標示不一致</div>
+      <div class="prob__row">
+        <span class="prob__lab">狀況</span><p class="prob__txt">毛孩時代標 Omega-3 <b>95%</b>、御熹堂標 <b>90%</b>，但 EPA 60 / DHA 20 完全一樣——是同一支油。</p>
+        <span class="prob__lab">影響</span><p class="prob__txt">向供應商要求時必須以較高的 950 mg/g 為準，否則毛孩那支的標示沒有規格書可以支撐。</p>
+        <span class="prob__lab">今天要拿到</span><p class="prob__txt">對方 60/20 的實際保證值（目前掌握是 850，差 100）。</p>
+      </div>
+    </div>
+
+    <div class="prob">
+      <div class="prob__t"><span class="prob__no">06</span>rTG 的「純度」可能不如預期</div>
+      <div class="prob__row">
+        <span class="prob__lab">狀況</span><p class="prob__txt">對方規格書上 Triglyceride 只寫 <b>≥60%</b>，代表只有六成真的是三酸甘油酯型，其餘還是中間產物。歐洲同級產品寫 ≥90%。</p>
+        <span class="prob__lab">影響</span><p class="prob__txt">我方產品品名主打「rTG」，這是對外訴求的一部分。</p>
+        <span class="prob__lab">今天要拿到</span><p class="prob__txt">實際批次落在多少、能不能提高並寫進規格書。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 規格門檻 ───────── -->
+  <section id="spec">
+    <h2>我方各規格的門檻</h2>
+    <p class="lede">門檻不是內部估算，是<b>彩盒上「關鍵成分（每份）」÷ 每份用油量</b>算出來的。她若質疑，直接把彩盒拍給她看。單位 mg/g 就是千分比：920 mg/g ＝ 92.0%。</p>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>油種</th><th class="n">每顆油</th><th class="n">每份用油</th><th class="n">彩盒每份標示</th><th class="n">→ 原油門檻 mg/g</th></tr>
+        </thead>
+        <tbody>
+          <tr class="rail rail--blue">
+            <td class="oil">4836（大藍魚）<span class="sub">達摩本草 92% Omega-3 rTG</span></td>
+            <td class="n">300 mg</td><td class="n">4 顆＝1,200 mg</td>
+            <td class="n">Omega-3 1,104<br>EPA 576　DHA 432</td>
+            <td class="n"><b>920 / 480 / 360</b></td>
+          </tr>
+          <tr class="rail rail--brick">
+            <td class="oil">8006（大紅魚）<span class="sub">達摩本草 EPA 深海魚油</span></td>
+            <td class="n">300 mg</td><td class="n">4 顆＝1,200 mg</td>
+            <td class="n">Omega-3 1,104<br>EPA 960　DHA 72</td>
+            <td class="n"><b>920 / 800 / 60</b></td>
+          </tr>
+          <tr class="rail rail--teal">
+            <td class="oil">6020（毛孩）<span class="sub">毛孩時代 95%／95% 迷你</span></td>
+            <td class="n">500／300 mg</td><td class="n">1 顆</td>
+            <td class="n">Omega-3 95%<br>EPA 60%　DHA 20%</td>
+            <td class="n"><b>950 / 600 / 200</b></td>
+          </tr>
+          <tr class="rail rail--teal">
+            <td class="oil">6020（御熹堂）<span class="sub">御熹堂 黃金頂級 90%</span></td>
+            <td class="n">300 mg</td><td class="n">4 顆＝1,200 mg</td>
+            <td class="n">Omega-3 &gt;1,080<br>EPA &gt;720　DHA &gt;240</td>
+            <td class="n"><b>900 / 600 / 200</b></td>
+          </tr>
+          <tr>
+            <td class="oil">5025（大島・PowerHero）<span class="sub">Omega-3 80%，量小，今天不談</span></td>
+            <td class="n">300 mg</td><td class="n">4 顆＝1,200 mg</td>
+            <td class="n">Omega-3 960<br>EPA 600　DHA 300</td>
+            <td class="n">800 / 500 / 250</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pin pin--teal">
+      <div class="pin__k">6020 這條線要注意</div>
+      <p class="pin__q" style="font-size:18px">同一支油，毛孩標 95%、御熹堂標 90%。</p>
+      <p class="pin__n">兩邊的 EPA 60% / DHA 20% 完全一樣，是同一支油。<b>向供應商要求時要用比較高的 950 mg/g</b>，否則毛孩的 95% 沒有規格書可以支撐。<br>另外提醒：EPA＋DHA 只佔 800 mg/g，要湊到 950 需要 <b>15% 的其他 Omega-3</b>（主要是 DPA）。這個比例很高，而且沒辦法靠調配油補出來——DPA 多少取決於原油本身。</p>
+    </div>
+  </section>
+
+  <!-- ───────── 差距 ───────── -->
+  <section id="gap">
+    <h2>華泰能給的，差在哪裡</h2>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>比較</th><th class="n">Omega-3</th><th class="n">EPA</th><th class="n">DHA</th><th>判讀</th></tr></thead>
+        <tbody>
+          <tr class="base"><td>4836（大藍魚）我方需要</td><td class="n">920</td><td class="n">480</td><td class="n">360</td><td>—</td></tr>
+          <tr><td>華泰 4836TG</td><td class="n gap">890　差 30</td><td class="n gap">450　差 30</td><td class="n gap">340　差 20</td><td><span class="chip chip--gap">三項都不夠</span></td></tr>
+          <tr><td>華泰 5040TG</td><td class="n gap">900　差 20</td><td class="n gap">470　差 10</td><td class="n ok">380　多 20</td><td><span class="chip chip--gap">最接近，只差兩項</span></td></tr>
+
+          <tr class="base"><td>8006（大紅魚）我方需要</td><td class="n">920</td><td class="n">800</td><td class="n">60</td><td>—</td></tr>
+          <tr><td>華泰 8006TG</td><td class="n">未提供</td><td class="n gap">770　差 30</td><td class="n">未提供</td><td><span class="chip chip--gap">EPA 不夠，且已暫停接單</span></td></tr>
+
+          <tr class="base"><td>6020 我方需要（以毛孩 95% 為準）</td><td class="n">950</td><td class="n">600</td><td class="n">200</td><td>—</td></tr>
+          <tr><td>華泰 60/20TG</td><td class="n gap">850　差 100</td><td class="n ok">600　剛好</td><td class="n ok">200　剛好</td><td><span class="chip chip--gap">EPA/DHA 沒問題，總量差很多</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lede">她 8/8 建議把 4836 改成 <b>400 / 300 mg/g</b>（大約等於 4332）。那是降規：每份只剩 EPA 480、DHA 360 毫克，比彩盒印的 576 / 432 少一截，等於彩盒、瓶標、通路頁面全部要改。<b>不能接受。</b></p>
+  </section>
+
+  <!-- ───────── 年用量 ───────── -->
+  <section id="vol">
+    <h2>我方年用量</h2>
+    <p class="lede">ERP 銷貨資料，2025/08–2026/07 一整年。多入組合（x2／x3／x6／x10／x12／x20）已<b>還原成實際盒數</b>，禮盒與加價購組合已<b>拆到最小單位</b>。全部品項的每顆填充量都用實體彩盒核對過，沒有估算。</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>油種</th><th>品牌</th><th class="n">還原盒數</th><th class="n">公斤／年</th><th class="n">桶／年</th><th class="n">佔比</th></tr></thead>
+        <tbody>
+          <tr class="rail rail--blue"><td class="oil">4836（大藍魚）</td><td>達摩本草</td><td class="n">257,554</td><td class="n"><b>6,561</b></td><td class="n"><b>34.5</b></td><td class="n">68.4%</td></tr>
+          <tr class="rail rail--teal"><td class="oil">6020（毛孩・御熹堂）</td><td>毛孩時代・御熹堂</td><td class="n">95,565</td><td class="n"><b>1,799</b></td><td class="n"><b>9.5</b></td><td class="n">18.8%</td></tr>
+          <tr class="rail rail--brick"><td class="oil">8006（大紅魚）</td><td>達摩本草</td><td class="n">31,934</td><td class="n"><b>1,159</b></td><td class="n"><b>6.1</b></td><td class="n">12.1%</td></tr>
+          <tr><td class="oil">5025（大島・PowerHero）</td><td>大島生醫・PowerHero</td><td class="n">3,985</td><td class="n"><b>72</b></td><td class="n"><b>0.4</b></td><td class="n">0.7%</td></tr>
+          <tr class="base"><td>高濃度合計</td><td>—</td><td class="n">389,038</td><td class="n">9,591</td><td class="n">50.5</td><td class="n">100%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>各品項明細</h3>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>油種</th><th>品項</th><th class="n">還原盒數</th><th class="n">每顆油</th><th class="n">公斤</th></tr></thead>
+        <tbody>
+          <tr class="rail rail--blue"><td class="oil">4836</td><td>92%藍魚 120顆／30顆／4顆包，＋7 款組合</td><td class="n">257,554</td><td class="n">300 mg</td><td class="n">6,561</td></tr>
+          <tr class="rail rail--teal"><td class="oil">6020</td><td>毛孩時代 95%頂級深海魚油（30入）</td><td class="n">64,261</td><td class="n">500 mg</td><td class="n">964</td></tr>
+          <tr class="rail rail--teal"><td class="oil">6020</td><td>御熹堂 黃金頂級90%專利魚油（120顆＋30顆）</td><td class="n">26,481</td><td class="n">300 mg</td><td class="n">792</td></tr>
+          <tr class="rail rail--teal"><td class="oil">6020</td><td>毛孩時代 95%頂級深海迷你魚油（30顆）</td><td class="n">4,823</td><td class="n">300 mg</td><td class="n">43</td></tr>
+          <tr class="rail rail--brick"><td class="oil">8006</td><td>紅魚 120顆，＋3 款蝦皮組合</td><td class="n">31,934</td><td class="n">300 mg</td><td class="n">1,159</td></tr>
+          <tr><td class="oil">5025</td><td>PowerHero EPA極效（60顆/包）</td><td class="n">2,721</td><td class="n">300 mg</td><td class="n">49</td></tr>
+          <tr><td class="oil">5025</td><td>大島生醫 挪威高濃度頂級（60粒/包）</td><td class="n">1,264</td><td class="n">300 mg</td><td class="n">23</td></tr>
+          <tr><td class="oil" style="color:var(--mute)">另計</td><td>奧沛 寵物全效魚油粉（低濃度，Omega-3 僅佔脂肪 30%）</td><td class="n">2,371</td><td class="n">600 mg</td><td class="n">43</td></tr>
+          <tr><td class="oil" style="color:var(--mute)">不計</td><td>達摩 智益佳咀嚼魚油 —— <b>日本製成品進口</b>，原油非我方採購</td><td class="n">5,888</td><td class="n">—</td><td class="n">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ───────── 提問 ───────── -->
+  <section id="ask">
+    <h2>會議提問清單</h2>
+    <p class="lede">一開場就把流程講出來，不然容易被半小時的公司簡報吃掉時間。可以這樣說：<br><b>「今天想用一小時談三件事：先請貴司做十五分鐘的公司介紹，接著二十五分鐘對規格——其中 8006 最急，最後二十分鐘想聽貴司的建議。若能給個報價或大概區間，對我方推進最有幫助。」</b></p>
+    <p class="lede">共 <b>48</b> 題，其中 <b>9</b> 題標示為<b>必問</b>。用下面的按鈕切換角色，問完可以打勾，勾選會記在這台電腦上。</p>
+    <div class="ask-tools">
+      <div class="filters" role="group" aria-label="依角色篩選">
+        <button type="button" data-role="all" aria-pressed="true">全部 <span class="cnt">48</span></button>
+        <button type="button" data-role="sc" aria-pressed="false">供應鏈 <span class="cnt">19</span></button>
+        <button type="button" data-role="qc" aria-pressed="false">品管 <span class="cnt">16</span></button>
+        <button type="button" data-role="pc" aria-pressed="false">生管 <span class="cnt">13</span></button>
+        <button type="button" data-role="must" aria-pressed="false">只看必問 <span class="cnt">9</span></button>
+      </div>
+      <div class="ask-prog"><span id="askDone">0</span> / <span id="askTotal">48</span> 已問　<button type="button" id="askReset" class="mini-btn">清除勾選</button></div>
+    </div>
+    <h3 class="role-hd" id="role-sc" data-role="sc">供應鏈｜以下這幾組由供應鏈同事發問</h3>
+    <div class="blk" data-role="sc">
+      <div class="blk__hd"><span class="blk__t">先認識這家公司</span><span class="blk__m">供應鏈 · 4 題</span></div>
+      <div class="qs">
+        <label class="q" data-q="q1" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">貴司什麼時候成立？工廠多大？主要有哪幾條產線？</span>
+          </span>
+        </label>
+        <label class="q" data-q="q2" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">魚油的原料從哪來？哪些製程是自己做的、哪些是外面買的？</span>
+            <span class="q__why">要判斷她是真的濃縮廠，還是貿易商轉手。自己做濃縮才有客製空間。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q3" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">主要賣到哪些國家？客戶多半是做保健食品還是做藥的？</span>
+          </span>
+        </label>
+        <label class="q" data-q="q4" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">一年產能多少？其中大概多少比例是給海外客戶的？</span>
+            <span class="q__why">看我方 50 桶的量在她眼裡是什麼份量，決定講量時要多用力。</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="blk" data-role="sc">
+      <div class="blk__hd"><span class="blk__t">8006（大紅魚）—— 今天最急</span><span class="blk__m">供應鏈 · 5 題</span></div>
+      <div class="qs">
+        <label class="q must" data-q="q5" data-must="1">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask"><span class="q__tag">必問</span>8006 現在還接不接單？</span>
+            <span class="q__why">她 8/8 說高 EPA 原料很缺、很少接單。要分清楚是「這陣子沒有」還是「以後都不做」。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q6" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">下一批什麼時候生產？我方可以先排隊嗎？</span>
+            <span class="q__why">高 EPA 是三、四個月才集中做一次。我方一年只用 6 桶，排得進去就夠用很久。</span>
+          </span>
+        </label>
+        <label class="q must" data-q="q7" data-must="1">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask"><span class="q__tag">必問</span>規格書上最高能寫到 EPA 多少？</span>
+            <span class="q__why">要白紙黑字能保證的數字，不是「實測通常有多少」。先問到天花板，就不必一項一項試。我方需要 800 mg/g，她現有規格書是 770。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q8" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">8006 最少要買多少？倉庫現在有貨嗎？運到基隆多少錢？</span>
+          </span>
+        </label>
+        <label class="q" data-q="q9" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">如果 8006 真的做不了，貴司現在做得出來最高的 EPA 是哪一支？</span>
+            <span class="q__why">留退路。也許有 70% 之類的規格可以先接上。</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="blk" data-role="sc">
+      <div class="blk__hd"><span class="blk__t">4836（大藍魚）與 6020</span><span class="blk__m">供應鏈 · 5 題</span></div>
+      <div class="qs">
+        <label class="q must" data-q="q10" data-must="1">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask"><span class="q__tag">必問</span>規格書上的 48 / 36，是面積% 還是重量%？</span>
+            <span class="q__why">今天最關鍵的一題。她的面積% 是 94/48/36 看起來夠，換成重量只有 890/450/340，就不夠。</span>
+          </span>
+        </label>
+        <label class="q must" data-q="q11" data-must="1">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask"><span class="q__tag">必問</span>能不能為我方訂單出一份寫著 920 / 480 / 360 mg/g 的規格書？要加多少錢、最少買多少？</span>
+            <span class="q__why">我方標示只能引用規格書保證值，不能引用單批檢驗報告。重點是「文件上寫得出來」。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q12" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">5040 只差一點點（Omega-3 差 20、EPA 差 10），有沒有辦法補上？</span>
+            <span class="q__why">5040 是她手上最接近的一支，DHA 還多 20。缺口這麼小值得談。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q13" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">規格書上 Triglyceride 只寫 60%，實際做出來大概多少？能不能寫高一點？</span>
+            <span class="q__why">我方主打 rTG。60% 表示只有六成真的變回三酸甘油酯。歐洲同級寫 90%。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q14" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">6020 現在恢復接單了嗎？</span>
+            <span class="q__why">她 8/4 說因高 EPA 原料緊缺，60/20 已基本停止接單。</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="blk" data-role="sc">
+      <div class="blk__hd"><span class="blk__t">換她給建議與商務條件</span><span class="blk__m">供應鏈 · 5 題</span></div>
+      <div class="qs">
+        <label class="q" data-q="q15" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">以貴司的經驗看，我方這三個規格有哪些訂得不合理、或可以調整的？</span>
+            <span class="q__why">這一段讓她講。她若願意指出問題，通常也會跟著給解法。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q16" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">有沒有別的等級、或幾支搭配著用，可以做到一樣的效果？</span>
+          </span>
+        </label>
+        <label class="q" data-q="q17" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">貴司之前推薦的 5040，是想對應我方哪一支？為什麼？</span>
+            <span class="q__why">讓她自己說明邏輯。她 8/8 主張把 4836 降到 400/300，這一段讓那套想法攤開談。</span>
+          </span>
+        </label>
+        <label class="q must" data-q="q18" data-must="1">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask"><span class="q__tag">必問</span>能不能談年度鎖價，或先鎖量分批出貨？</span>
+            <span class="q__why">這是我方真正想解決的問題——價格波動。比殺價更重要。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q19" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">報價的有效期多久？付款條件怎麼算？</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <h3 class="role-hd" id="role-qc" data-role="qc">品管｜以下這幾組由品管同事發問</h3>
+    <div class="blk" data-role="qc">
+      <div class="blk__hd"><span class="blk__t">資格與檢驗能力</span><span class="blk__m">品管 · 4 題</span></div>
+      <div class="qs">
+        <label class="q" data-q="q20" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">貴廠有哪些品質系統認證？是誰發的、什麼時候到期？</span>
+            <span class="q__why">她信中提過 GMP 與 GOED，但沒說發證機構與效期。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q21" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">COA 上的數據是貴廠自己驗的，還是送外部實驗室？</span>
+            <span class="q__why">自檢和第三方檢驗的公信力差很多。若是自檢，要問實驗室有無 ISO 17025 之類資格。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q22" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">每一批都會驗嗎？還是抽批驗？</span>
+            <span class="q__why">若是抽驗，我方拿到的 COA 可能不是這一批的實際數據。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q23" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">我方日後可以安排實地稽核或視訊稽核嗎？</span>
+            <span class="q__why">這題問出來的態度比答案更重要。願意被看的廠通常比較沒問題。</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="blk" data-role="qc">
+      <div class="blk__hd"><span class="blk__t">污染物與氧化管控</span><span class="blk__m">品管 · 4 題</span></div>
+      <div class="qs">
+        <label class="q must" data-q="q24" data-must="1">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask"><span class="q__tag">必問</span>重金屬、塑化劑、戴奧辛、多氯聯苯這幾項怎麼管控？多久驗一次？</span>
+            <span class="q__why">魚油最容易出事的就是這幾項。塑化劑我方問過兩次她都沒正面回答，這題要當場問到。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q25" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">出廠的氧化指標（POV、AV、TOTOX）標準是多少？實際批次通常落在哪？</span>
+            <span class="q__why">她規格書寫 POV ≤5.0、TOTOX ≤26。要問實際值，因為海運到台灣還會再升高。</span>
+          </span>
+        </label>
+        <label class="q must" data-q="q26" data-must="1">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask"><span class="q__tag">必問</span>5040 的規格書能不能補上 3-MCPD 和縮水甘油脂肪酸酯？什麼時候給？</span>
+            <span class="q__why">縮水甘油脂肪酸酯是台灣法規要求項目。她 8/8 已回「可以的」，今天確認時程。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q27" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">塑化劑和黃麴毒素能不能直接寫進 COA？</span>
+            <span class="q__why">兩支規格書上都沒有。可能是根本沒驗——那我方就要自己送驗，費用要先算進去。</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="blk" data-role="qc">
+      <div class="blk__hd"><span class="blk__t">追溯、留樣與文件</span><span class="blk__m">品管 · 6 題</span></div>
+      <div class="qs">
+        <label class="q" data-q="q28" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">批號怎麼編？可以追溯到哪一層？追得到捕撈批次嗎？</span>
+            <span class="q__why">只能追到「哪個月生產」和能追到「哪一船漁獲」差很多。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q29" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">有沒有留樣？留多久？我方事後要複驗，能提供同批留樣嗎？</span>
+          </span>
+        </label>
+        <label class="q" data-q="q30" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">保存期限是怎麼訂出來的？有沒有安定性試驗數據可以提供？</span>
+            <span class="q__why">很多廠是「同業都寫兩年所以我也寫兩年」。有做過試驗才是真的。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q31" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">秘魯產地證、最近三批的檢驗報告，什麼時候可以給？</span>
+          </span>
+        </label>
+        <label class="q" data-q="q32" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">手上這份 5040 規格書是 2024 年 12 月的，還是現行版嗎？</span>
+          </span>
+        </label>
+        <label class="q" data-q="q33" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">規格書與 COA 能不能出英文版？</span>
+            <span class="q__why">未來我方要做客戶稽核或送件會用到。</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="blk" data-role="qc">
+      <div class="blk__hd"><span class="blk__t">變更與異常處理</span><span class="blk__m">品管 · 2 題</span></div>
+      <div class="qs">
+        <label class="q" data-q="q34" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">如果配方、製程或原料來源有變更，會事先通知我方嗎？</span>
+            <span class="q__why">變更管制。沒有這個機制，就可能在我方不知情下換了原料。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q35" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">出現不合格品或客訴時的處理流程？有沒有書面的召回程序？</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <h3 class="role-hd" id="role-pc" data-role="pc">生管｜以下這幾組由生管同事發問</h3>
+    <div class="blk" data-role="pc">
+      <div class="blk__hd"><span class="blk__t">交期與排產</span><span class="blk__m">生管 · 5 題</span></div>
+      <div class="qs">
+        <label class="q must" data-q="q36" data-must="1">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask"><span class="q__tag">必問</span>從下單到原油進我方廠，實際各要多少天？</span>
+            <span class="q__why">她給過三段：樣品與 COA 10 天、出貨到報關 35–50 天、原油到廠到成品 30 天。要確認這是常態還是最順利的情況。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q37" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">貴司多久排產一次？我方要提前多久下單才排得進去？</span>
+            <span class="q__why">高 EPA 是三、四個月一批。錯過就是一季，這直接決定我方的請購時點。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q38" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">現在倉庫有哪些規格的現貨？各有多少？</span>
+            <span class="q__why">有現貨就能縮短前置期，也是缺貨時的緩衝。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q39" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">可以幫我方備安全庫存嗎？條件是什麼？</span>
+            <span class="q__why">我方年用量分散在多個規格，若能備庫存就不必每次都等排產。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q40" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">旺季或原料緊缺時，會怎麼分配產能？我方排在什麼順位？</span>
+            <span class="q__why">這題的答案決定我方要不要簽年約來換順位。</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="blk" data-role="pc">
+      <div class="blk__hd"><span class="blk__t">批量與出貨</span><span class="blk__m">生管 · 3 題</span></div>
+      <div class="qs">
+        <label class="q" data-q="q41" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">最小訂購量與最小生產批量各是多少？兩者一樣嗎？</span>
+            <span class="q__why">MOQ 是「最少買多少」，最小批量是「機台一次至少做多少」，常常不同。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q42" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">一次最多可以出多少？可以分批出貨嗎？分批會不會加價？</span>
+          </span>
+        </label>
+        <label class="q" data-q="q43" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">出貨前多久會通知？能提供追蹤資訊嗎？</span>
+            <span class="q__why">我方要據此安排報關行與倉庫收貨。</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="blk" data-role="pc">
+      <div class="blk__hd"><span class="blk__t">包裝、運輸與儲存</span><span class="blk__m">生管 · 5 題</span></div>
+      <div class="qs">
+        <label class="q" data-q="q44" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">一桶淨重與毛重各多少？一個貨櫃可以裝幾桶？有沒有上棧板？</span>
+            <span class="q__why">影響我方的進口成本試算與倉庫儲位規劃。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q45" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">走海運還是空運？從哪個港出？報關文件由哪一方準備？</span>
+            <span class="q__why">分工不清楚會卡在碼頭。</span>
+          </span>
+        </label>
+        <label class="q must" data-q="q46" data-must="1">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask"><span class="q__tag">必問</span>到貨時至少要保留多少效期？貴司能承諾嗎？</span>
+            <span class="q__why">保存期三年，但若到貨只剩一年，我方的生產排程會被綁死。這一項要寫進採購條件。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q47" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">原油的儲存條件是什麼？我方倉庫需要冷藏嗎？</span>
+            <span class="q__why">決定我方要不要另外安排冷藏儲位，這是實際成本。</span>
+          </span>
+        </label>
+        <label class="q" data-q="q48" data-must="0">
+          <input type="checkbox" class="q__cb">
+          <span class="q__body">
+            <span class="q__ask">開桶之後建議多久用完？未用完的部分怎麼保存？</span>
+            <span class="q__why">直接影響我方代工廠的投料排程——一桶 190 公斤不一定一次用得完。</span>
+          </span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 情境 ───────── -->
+  <section id="case">
+    <h2>可能發生的狀況與應對</h2>
+    <p class="lede">左邊是她可能說的話，右邊是可以直接照著講的回應。粗體那句可以原話使用。</p>
+
+    <div class="sc">
+      <div class="sc__if">她說：「8006 現在真的沒有辦法，也不確定什麼時候有。」</div>
+      <div class="sc__row"><span class="sc__lab">你可以這樣回</span><p class="sc__say"><b>「了解，那我換個方式問——貴司現在做得出來、而且規格書上寫得出來的最高 EPA 是多少？我方先看那一支能不能用。另外，下一次排產如果有時間表，可不可以先把我方放進名單？我方一年只用 6 桶，接受等 6 個月。」</b></p></div>
+      <div class="sc__row"><span class="sc__lab">重點</span><p class="sc__note">不要空手離開。至少帶回三樣：她的 EPA 天花板、下一批的粗估時間、我方進不進得了預排名單。</p></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc__if">她堅持：「按你們的裝量算，用 400/300 就夠了。」</div>
+      <div class="sc__row"><span class="sc__lab">你可以這樣回</span><p class="sc__say"><b>「我方彩盒上印的是每份 EPA 576 毫克、DHA 432 毫克。用 400/300 算出來是 480 和 360，比印在盒子上的少。台灣的標示只能引用規格書的保證值，不能用實測值，所以這個數字一改，彩盒、瓶標和所有通路頁面都要跟著改版。這一段我方沒有調整空間。」</b></p></div>
+      <div class="sc__row"><span class="sc__lab">接著把話題轉走</span><p class="sc__note">「不過 5040 只差 Omega-3 20、EPA 10，這個缺口有沒有辦法處理？」——把討論從「我方要不要降規」導到「她要不要補那一點」。</p></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc__if">她說：「我們的 48/36 是面積%，換成重量會低一些。」</div>
+      <div class="sc__row"><span class="sc__lab">你可以這樣回</span><p class="sc__say"><b>「那麻煩請原廠補一份重量基準（mg/g）的版本。若貴司以重量基準能寫的最高值就是 890 / 450 / 340，也請直接告訴我，我方好評估。」</b></p></div>
+      <div class="sc__row"><span class="sc__lab">重點</span><p class="sc__note">這是今天最可能卡住的地方。不用當場逼出結論，但一定要問到「以重量基準，你們最高能寫多少」這個數字。</p></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc__if">她報了一個偏高的價格。</div>
+      <div class="sc__row"><span class="sc__lab">你可以這樣回</span><p class="sc__say"><b>「謝謝，我帶回去給內部核決。」</b></p></div>
+      <div class="sc__row"><span class="sc__lab">絕對不要</span><p class="sc__note">不要當場議價，也不要說「別家比較便宜」。一旦透露別家報價，我方後續就沒有籌碼，而且會傳出去。</p></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc__if">她問：「你們現在用的是誰家的油？多少錢？」</div>
+      <div class="sc__row"><span class="sc__lab">你可以這樣回</span><p class="sc__say"><b>「我方目前有既有的配合廠商，這次是評估增加來源。」</b></p></div>
+      <div class="sc__row"><span class="sc__lab">重點</span><p class="sc__note">不給名字、不給價格，講完就把話題帶回規格。她 7/29 已經問過一次類似的問題了。</p></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc__if">她問：「怎麼會突然想找中國的廠？」</div>
+      <div class="sc__row"><span class="sc__lab">你可以這樣回</span><p class="sc__say"><b>「主要是 8006 這個規格全球都缺，我方想建立第二個來源。」</b></p></div>
+      <div class="sc__row"><span class="sc__lab">絕對不要</span><p class="sc__note">不要提有其他人也在調查中國市場。</p></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc__if">她說：「客製規格的最低量很大。」</div>
+      <div class="sc__row"><span class="sc__lab">你可以這樣回</span><p class="sc__say"><b>「最低量具體是多少？我方全魚油線一年約 50 桶，主力 4836 就有 34 桶。如果單看 8006 的量不夠，可不可以把幾個規格合起來談年度量？」</b></p></div>
+      <div class="sc__row"><span class="sc__lab">重點</span><p class="sc__note">8006 只有 6 桶，單獨拿出來說服力不夠。這時候才把 4836 的量搬出來。</p></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc__if">她要求：「先下單，文件之後再補。」</div>
+      <div class="sc__row"><span class="sc__lab">你可以這樣回</span><p class="sc__say"><b>「我方的流程是文件確認合格之後才安排出貨，這對所有供應商都是同一套標準。與其貨到了才發現規格對不上要退運，不如出貨前先確認。」</b></p></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc__if">她開始推成品代工。</div>
+      <div class="sc__row"><span class="sc__lab">你可以這樣回</span><p class="sc__say"><b>「我方成品代工這一塊已經有配合的廠商了，今天想聚焦在原料。」</b></p></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc__if">會議連結進不去。</div>
+      <div class="sc__row"><span class="sc__lab">備案</span><p class="sc__note">改用<b>騰訊會議</b>，或直接打電話。她的手機和 LinkedIn 都在信件簽名檔裡。先前 Teams 連結已經出過一次問題，所以先想好備案。</p></div>
+    </div>
+  </section>
+
+  <!-- ───────── 能講不能講 ───────── -->
+  <section id="say">
+    <h2>能講什麼、不能講什麼</h2>
+    <div class="two">
+      <div class="box">
+        <h3>可以講</h3>
+        <ul>
+          <li>高濃度魚油年需求 <b>9,591 公斤／50.5 桶</b>（8/3 信件已經告訴她「約 9.5 公噸」，數字一致）</li>
+          <li><b>4836（大藍魚）是主力，34.5 桶／年，佔 68%</b>；6020 共 9.5 桶、8006 共 6.1 桶</li>
+          <li>秘魯漁季已經結束、供應更緊——她也知道，講出來反而顯示我方懂行情</li>
+          <li>我方三個規格的門檻數字，<b>這是今天談判的基礎，必須講</b></li>
+          <li>我方是以長期配合為前提在規劃</li>
+        </ul>
+      </div>
+      <div class="box box--no">
+        <h3>不要講</h3>
+        <ul>
+          <li>其他供應商的<b>油源品牌、品號、報價</b></li>
+          <li>我方現在用誰的油、成本多少</li>
+          <li><b>有其他人也在調查中國市場</b></li>
+          <li>不要一開口就單獨講「8006 一年 6 桶」。單看量小，容易被排到順位後面。先講全線 50 桶、4836 主力 34.5 桶，再把 8006 定位成「要建立穩定供應的規格」。她若直接問，就照實說，但立刻接上全線的量和年度合作的意願</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <p style="margin:0"><b>會前五分鐘備好：</b>會議連結、四張彩盒標示照片（門檻的依據，被質疑時直接出示）、5040TG 與 4836TG 規格書、品管同事在線。手邊寫著 <span class="num">920 / 480 / 360</span>。</p>
+    <p style="margin:0"><b>兩件待確認（與我方資料無關）：</b>① 華泰 8006TG 的 770 mg/g 與 60/20TG 的 850 mg/g 是從往來信件的敘述來的，不是規格書原文，今天當面確認一次；② PowerHero 彩盒只寫 Omega-3 80%、沒列 EPA／DHA，而官網曾寫 40/40，會後內部釐清。</p>
+    <p style="margin:0"><b>資料來源：</b>達摩本草／毛孩時代／御熹堂／PowerHero／大島生醫／奧沛實體包材標示；ERP 銷貨 2025/08/01–2026/07/31；華泰 07/31–08/11 往來信件；5040TG 規格書（TS/CP-016/5040TG/02，2024/12/10）。</p>
+  </div>
+
+</div>
+
+<button class="pal-btn" id="palBtn" aria-expanded="false" aria-controls="palPanel">
+  <span class="dots" aria-hidden="true"><i style="background:var(--blue)"></i><i style="background:var(--brick)"></i><i style="background:var(--teal)"></i></span>
+  配色主題
+</button>
+
+<div class="pal-panel" id="palPanel" data-open="false" role="dialog" aria-label="配色主題">
+  <h4>🎨 配色主題</h4>
+  <p>選一組你喜歡的配色，只會改你自己的畫面，不影響別人看到的版本。</p>
+  <p class="pal-lab">明暗</p>
+  <div class="pal-seg" id="palSeg">
+    <button type="button" data-mode="light" aria-pressed="true">淺色</button>
+    <button type="button" data-mode="dark"  aria-pressed="false">深色</button>
+  </div>
+  <p class="pal-lab">配色</p>
+  <div class="pal-grid" id="palGrid" role="radiogroup" aria-label="配色選項"></div>
+</div>
+
+<script>
+(function(){
+  var PALETTES = [{"id": "sky", "nm": "經典天際", "ds": "預設・穩重"}, {"id": "green", "nm": "CIS 正規綠", "ds": "官方雙綠"}, {"id": "coral", "nm": "活力珊瑚", "ds": "熱情紅橘"}, {"id": "electric", "nm": "電光藍", "ds": "清爽科技"}, {"id": "berry", "nm": "莓果紫", "ds": "優雅"}, {"id": "sunrise", "nm": "日出橘", "ds": "陽光暖橘"}, {"id": "sakura", "nm": "桃櫻粉", "ds": "甜美"}, {"id": "neon", "nm": "霓虹青", "ds": "亮眼"}];
+  var PKEY = "huatai-brief-palette", MKEY = "huatai-brief-mode";
+  var root = document.documentElement;
+  var grid = document.getElementById("palGrid");
+  var seg  = document.getElementById("palSeg");
+  var btn  = document.getElementById("palBtn");
+  var panel= document.getElementById("palPanel");
+
+  // 多層保存：localStorage 不可用時退到 sessionStorage，再不行就只留在記憶體
+  var mem = {};
+  function put(k,v){
+    mem[k]=v;
+    try{ localStorage.setItem(k,v); }catch(e){}
+    try{ sessionStorage.setItem(k,v); }catch(e){}
+  }
+  function get(k){
+    try{ var a=localStorage.getItem(k); if(a) return a; }catch(e){}
+    try{ var b=sessionStorage.getItem(k); if(b) return b; }catch(e){}
+    return mem[k] || null;
+  }
+
+  function ids(){ return PALETTES.map(function(p){ return p.id; }); }
+  function curPal(){ var v=root.getAttribute("data-palette"); return ids().indexOf(v)>=0 ? v : PALETTES[0].id; }
+  function curMode(){ return root.getAttribute("data-theme")==="dark" ? "dark" : "light"; }
+
+  function paint(){
+    var pid = curPal(), m = curMode();
+    Array.prototype.forEach.call(grid.children, function(el){
+      el.setAttribute("aria-checked", el.dataset.id === pid ? "true" : "false");
+    });
+    Array.prototype.forEach.call(seg.children, function(b){
+      b.setAttribute("aria-pressed", b.dataset.mode === m ? "true" : "false");
+    });
+  }
+
+  function setPalette(id, save){
+    root.setAttribute("data-palette", id);
+    if (save) put(PKEY, id);
+    paint();
+  }
+  function setMode(m, save){
+    root.setAttribute("data-theme", m);
+    if (save) put(MKEY, m);
+    paint();
+  }
+
+  PALETTES.forEach(function(p){
+    var b = document.createElement("button");
+    b.type="button"; b.className="pal-item"; b.dataset.id=p.id;
+    b.setAttribute("role","radio"); b.setAttribute("aria-checked","false");
+    b.innerHTML = '<span class="pal-sw" aria-hidden="true"><i></i><i></i></span>' +
+      '<span class="pal-txt"><span class="pal-nm">'+p.nm+'</span><span class="pal-ds">'+p.ds+'</span></span>' +
+      '<span class="pal-ck" aria-hidden="true">\u2713</span>';
+    b.addEventListener("click", function(){ setPalette(p.id, true); });
+    grid.appendChild(b);
+  });
+  Array.prototype.forEach.call(seg.children, function(b){
+    b.addEventListener("click", function(){ setMode(b.dataset.mode, true); });
+  });
+
+  btn.addEventListener("click", function(){
+    var open = panel.dataset.open === "true";
+    panel.dataset.open = open ? "false" : "true";
+    btn.setAttribute("aria-expanded", open ? "false" : "true");
+  });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape" && panel.dataset.open === "true"){
+      panel.dataset.open="false"; btn.setAttribute("aria-expanded","false"); btn.focus();
+    }
+  });
+  document.addEventListener("click", function(e){
+    if (panel.dataset.open === "true" && !panel.contains(e.target) && !btn.contains(e.target)){
+      panel.dataset.open="false"; btn.setAttribute("aria-expanded","false");
+    }
+  });
+
+  // 任何情況下屬性被清掉，就依保存值補回來
+  function restore(){
+    var pid = get(PKEY), m = get(MKEY);
+    if (ids().indexOf(pid) < 0) pid = curPal();
+    if (m !== "light" && m !== "dark") m = curMode();
+    if (root.getAttribute("data-palette") !== pid) root.setAttribute("data-palette", pid);
+    if (root.getAttribute("data-theme") !== m) root.setAttribute("data-theme", m);
+    paint();
+  }
+  window.addEventListener("pageshow", restore);
+  window.addEventListener("hashchange", restore);
+  document.addEventListener("visibilitychange", function(){ if (!document.hidden) restore(); });
+  new MutationObserver(restore).observe(root, {attributes:true, attributeFilter:["data-theme","data-palette"]});
+
+  restore();
+})();
+</script>
+<script>
+(function(){
+  var KEY = "huatai-brief-asked";
+  var filters = document.querySelectorAll(".filters button");
+  var groups  = document.querySelectorAll(".blk[data-role]");
+  var heads   = document.querySelectorAll(".role-hd");
+  var labels  = document.querySelectorAll("label.q");
+  var doneEl  = document.getElementById("askDone");
+  var resetEl = document.getElementById("askReset");
+
+  var asked = {};
+  try { asked = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ asked = {}; }
+
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(asked)); } catch(e){} }
+  function count(){
+    var n = 0;
+    labels.forEach(function(l){ if (asked[l.dataset.q]) n++; });
+    doneEl.textContent = n;
+  }
+  labels.forEach(function(l){
+    var cb = l.querySelector(".q__cb");
+    if (asked[l.dataset.q]) { cb.checked = true; l.classList.add("done"); }
+    cb.addEventListener("change", function(){
+      if (cb.checked) asked[l.dataset.q] = 1; else delete asked[l.dataset.q];
+      l.classList.toggle("done", cb.checked);
+      save(); count();
+    });
+  });
+  count();
+
+  resetEl.addEventListener("click", function(){
+    asked = {}; save();
+    labels.forEach(function(l){ l.classList.remove("done"); l.querySelector(".q__cb").checked = false; });
+    count();
+  });
+
+  function applyFilter(mode){
+    filters.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.role === mode ? "true" : "false"); });
+    labels.forEach(function(l){
+      l.hidden = (mode === "must") ? l.dataset.must !== "1" : false;
+    });
+    groups.forEach(function(g){
+      var showRole = (mode === "all" || mode === "must" || g.dataset.role === mode);
+      var visibleQ = Array.prototype.filter.call(g.querySelectorAll("label.q"), function(l){ return !l.hidden; }).length;
+      g.hidden = !showRole || visibleQ === 0;
+    });
+    heads.forEach(function(h){
+      var any = Array.prototype.filter.call(
+        document.querySelectorAll('.blk[data-role="' + h.dataset.role + '"]'),
+        function(g){ return !g.hidden; }).length;
+      h.hidden = any === 0;
+    });
+  }
+  filters.forEach(function(b){ b.addEventListener("click", function(){ applyFilter(b.dataset.role); }); });
+  applyFilter("all");
+})();
+</script>
+<script>
+(function(){
+  var nav = document.querySelector(".sidenav");
+  if (!nav) return;
+  var links = nav.querySelectorAll("a[href^='#']");
+  var map = {};
+  links.forEach(function(a){
+    var id = a.getAttribute("href").slice(1);
+    if (id && id !== "top") map[id] = a;
+  });
+
+  // 點角色捷徑時，順便把提問清單切到該角色
+  nav.querySelectorAll("a.sub").forEach(function(a){
+    a.addEventListener("click", function(){
+      var btn = document.querySelector('.filters [data-role="' + a.dataset.role + '"]');
+      if (btn) btn.click();
+    });
+  });
+
+  var targets = [];
+  Object.keys(map).forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) targets.push(el);
+  });
+
+  function mark(id){
+    links.forEach(function(a){ a.classList.remove("on"); });
+    if (map[id]) map[id].classList.add("on");
+  }
+
+  if ("IntersectionObserver" in window){
+    var seen = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ seen[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+      var best = null, bv = 0;
+      targets.forEach(function(el){
+        var v = seen[el.id] || 0;
+        if (v > bv){ bv = v; best = el.id; }
+      });
+      if (best) mark(best);
+    }, {rootMargin:"-15% 0px -60% 0px", threshold:[0,.15,.4,.75,1]});
+    targets.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
